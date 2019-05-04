@@ -1,0 +1,73 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Real Estate Contacts</title>
+    <link rel="icon" href="{{ url_for('static', filename='images/real_estate_contacts_logo.png') }}">
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets_contacts/css/main.css') }}" />
+    <noscript>
+        <link rel="stylesheet" href="{{ url_for('static', filename='assets_contacts/css/noscript.css') }}" />
+    </noscript>
+</head>
+
+<body class="is-preload">
+    <div id="wrapper">
+        <div id="bg"></div>
+        <div id="overlay"></div>
+        <div id="main">
+
+            <!-- Header -->
+            <header id="header"> 
+                <h1> Real Estate Contacts</h1>
+                <p>Download &nbsp;&bull;&nbsp; Update</p>
+                <nav>
+                        <form method="POST" action="{{ url_for('download') }}">
+                            <input type='hidden' name="api_key" value="{{api_key}}">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-download"></i> Download contacts.csv</button>
+                        </form>
+                        Contains {{ contact_count }} real estate agent contacts <br>from {{ agency_count }} different agencies.
+                    </nav>
+                <nav>
+                    <form method="POST" action="{{ url_for('update') }}">
+                        <input type='hidden' name="api_key" value="{{api_key}}">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-refresh"></i> Update contacts.csv</button>
+                    </form>
+                    {% if error %}
+                    <div class="alert alert-info" role="alert">
+                        {{ error }}
+                    </div>
+                    {% else %}
+                    Last update {{ updated_date }} ago. <br>Updating will take up to 2 hours.
+                    {% endif %}
+                </nav>
+
+                <nav>
+                    <br>
+                </nav>
+                <nav>
+                    <p>Find more useful tools from my Website or Github</p> 
+                    <ul>
+                        <li><a href="http://rikonyberg.com/" class="icon fa-home"><span class="label">Website</span></a></li>
+                        <li><a href="https://github.com/RikoNyberg" class="icon fa-github"><span class="label">Github</span></a></li>
+                    </ul>
+                </nav>
+            </header>
+
+            <!-- Footer -->
+            <footer id="footer">
+                <span class="copyright">&copy; <a href="http://rikonyberg.com/">riko.fi</a></span>
+            </footer>
+
+        </div>
+    </div>
+    <script>
+        window.onload = function () { document.body.classList.remove('is-preload'); }
+        window.ontouchmove = function () { return false; }
+        window.onorientationchange = function () { document.body.scrollTop = 0; }
+    </script>
+</body>
+
+</html>

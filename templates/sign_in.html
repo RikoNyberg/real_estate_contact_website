@@ -1,0 +1,24 @@
+{% extends "form_layout.html" %}
+{% block content %}
+<div class="card-heading"></div>
+<div class="card-body">
+    <h2 class="title">Sign in to the contact list.</h2>
+    {% if test %}
+    <div class="alert alert-warning" role="alert">
+        {{ test }}
+    </div>
+    {% endif %}
+    <form method="POST" action="{{ url_for('sign_in') }}">
+        <div class="input-group">
+            <input class="input--style-3" type="text" placeholder="Username" name="name" required>
+        </div>
+        <div class="input-group">
+            <input class="input--style-3" type="text" placeholder="Password" name="password" required>
+        </div>
+
+        <div class="p-t-10">
+            <button class="btn btn--pill btn--green" type="submit">Sign in</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

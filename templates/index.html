@@ -1,0 +1,28 @@
+{% extends "form_layout.html" %}
+{% block content %}
+<div class="card-heading-2"></div>
+<div class="card-body">
+    <h2 class="title">Welcome to Real Estate info tool</h2>
+    <p>Here you can find list of agent contacts of all the major real estate companies in Finland. About 2500 contacts.<br></p>
+    {% if error %}
+    <div class="alert alert-warning" role="alert">
+        {{ error }}
+    </div>
+    {% endif %}
+    {% if test %}
+    <div class="alert alert-warning" role="alert">
+        {{ test }}
+    </div>
+    {% endif %}
+    <form method="POST" action="{{ url_for('sign_in') }}">
+        <div class="p-t-10">
+            <button class="btn btn--pill btn--green" type="submit">Sign in</button>
+        </div>
+    </form>
+    <form method="POST" action="{{ url_for('test') }}">
+            <div class="p-t-10">
+                <button class="btn btn--pill btn--green" type="submit">Sign in as Test User</button>
+            </div>
+        </form>
+</div>
+{% endblock %}
