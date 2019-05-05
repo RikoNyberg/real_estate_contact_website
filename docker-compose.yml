@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  my-app:
+    image: real_estate_contact_website
+    environment:
+      VIRTUAL_HOST: real-estate.rikonyberg.com
+      VIRTUAL_PORT: 5000
+      LETSENCRYPT_HOST: real-estate.rikonyberg.com
+      # LETSENCRYPT_EMAIL: hello@domain.com
+    expose:
+      - 5000
+        
+
+networks:
+  default:
+    external:
+      name: nginx-proxy

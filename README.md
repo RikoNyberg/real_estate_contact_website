@@ -25,7 +25,10 @@ $ docker build -t contact_crawler .
 $ docker run --rm --network host --name my_contact_crawler contact_crawler
 ```
 
+
+
 ```
-$ docker build -t contacts .
-$ docker run -d -p 5000:5000 contacts
+$ docker build -t real_estate_contact_website .
+
+$ docker-compose up -d
 ```
