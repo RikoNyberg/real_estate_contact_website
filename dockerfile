@@ -21,7 +21,7 @@ WORKDIR /app
 RUN pip3 install -r requirements.txt
 
 ENV PASSWORD="test"
-ENV NAME="test"
+ENV USERNAME="test"
 ENV API_KEY="e08acd7280411501d53843253d81fc6e"
 
 

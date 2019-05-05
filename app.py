@@ -11,7 +11,7 @@ from readabledelta import readabledelta
 from multiprocessing import Process
 
 
-DEBUG = False  # False is for production
+DEBUG = True  # False is for production
 from mongo_credentials import MONGO_URL
 if DEBUG:
     contacts_collection = MongoClient(MONGO_URL).contacts.real_estate_agent_contacts
@@ -46,8 +46,14 @@ def sign_in():
     if request.method == 'POST':
         name = form.name.data
         password = form.password.data
-        if name == os.environ.get('NAME') and password == os.environ.get('PASSWORD'):
+        print(name)
+        print(password)
+        print(os.environ.get('USERNAME'))
+        print(os.environ.get('PASSWORD'))
+        if name == os.environ.get('USERNAME') and password == os.environ.get('PASSWORD'):
             return redirect(url_for('contacts', api_key=os.environ.get('API_KEY')))
+        elif name == '' and password == '':
+            pass
         else:
             return render_template('sign_in.html', form=form, test='Wrong Username or Password.')
 
